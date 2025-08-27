@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhotoEnhance Ai</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div class="animated-bg"></div>
+
+  <div class="container">
+    <h1>PhotoEnhance Ai</h1>
+
+    <!-- Demo Cards -->
+    <div class="preview-container">
+      <div class="demo-card">
+        <h3>Preview</h3>
+        <img src="images/img1.png" alt="Preview Image">
+      </div>
+      <div class="demo-card">
+        <h3>Enhanced</h3>
+        <img src="images/img2.png" alt="Enhanced Image">
+      </div>
+    </div>
+
+    <!-- Upload Form -->
+    <form action="/api/images/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="image" required>
+      <button type="submit">Upload Image</button>
+    </form>
+
+    <!-- Enhance Form -->
+    <% if (uploadedId) { %>
+      <form action="/api/images/enhance" method="POST">
+        <input type="hidden" name="id" value="<%= uploadedId %>">
+        <button type="submit">Enhance Image</button>
+      </form>
+    <% } %>
+
+    <!-- Before & After Preview -->
+    <% if (uploadedId || enhancedId) { %>
+      <div class="preview-container">
+        <% if (uploadedId) { %>
+          <div class="preview-card">
+            <h3>Original</h3>
+            <img src="/api/images/download/<%= uploadedId %>" alt="Original Image">
+            <a href="/api/images/download/<%= uploadedId %>" class="download-btn" download>Download Original</a>
+          </div>
+        <% } %>
+        <% if (enhancedId) { %>
+          <div class="preview-card">
+            <h3>Enhanced</h3>
+            <img src="/api/images/download/<%= enhancedId %>" alt="Enhanced Image">
+            <a href="/api/images/download/<%= enhancedId %>" class="download-btn" download>Download Enhanced</a>
+          </div>
+        <% } %>
+      </div>
+    <% } %>
+  </div>
+</body>
+
+</html>

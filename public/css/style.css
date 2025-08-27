@@ -1,0 +1,265 @@
+/* ===== Reset & Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --black-dark: #000;
+  --black-mid: #0a0a0a;
+  --black-light: #1a1a1a;
+  --white-soft: #f0f0f0;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --accent-yellow: #ffdd00;
+  --accent-orange: #ff6a00;
+  --accent-blue: #00c6ff;
+  --accent-blue-dark: #0072ff;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--black-dark), var(--black-mid));
+  min-height: 100vh;
+  color: var(--white-soft);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 20px;
+  overflow-x: hidden;
+}
+
+/* ===== Animated Background ===== */
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, #111, #000);
+  filter: blur(100px);
+  opacity: 0.5;
+  animation: liquidMove 15s ease-in-out infinite alternate;
+  z-index: -2;
+  pointer-events: none;
+}
+
+@keyframes liquidMove {
+  0% {
+    transform: translate(-25%, -25%) scale(1);
+  }
+  50% {
+    transform: translate(-20%, -30%) scale(1.2);
+  }
+  100% {
+    transform: translate(-25%, -25%) scale(1);
+  }
+}
+
+/* ===== Container ===== */
+.container {
+  width: 100%;
+  max-width: 1000px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* ===== Heading ===== */
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 30px;
+  background: linear-gradient(90deg, var(--white-soft), #ccc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* ===== Forms ===== */
+form {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 35px;
+}
+
+input[type='file'] {
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--white-soft);
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+input[type='file']:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+button {
+  padding: 12px 30px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #222, #000);
+  color: var(--white-soft);
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+button:hover {
+  transform: translateY(-5px) scale(1.05);
+  background: linear-gradient(90deg, #333, #111);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* ===== Preview Cards ===== */
+.preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.demo-card,
+.preview-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 15px;
+  padding: 20px;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s ease;
+  margin-bottom: 40px;
+}
+
+.preview-card:hover {
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.6);
+}
+
+.demo-card img,
+.preview-card img {
+  width: 100%;
+  border-radius: 12px;
+  border: 2px solid var(--glass-border);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.demo-card img:hover,
+.preview-card img:hover {
+  transform: scale(1.05);
+  
+}
+
+.preview-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  background: linear-gradient(90deg, #fff, #999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== Download Button ===== */
+.download-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #222, #000);
+  color: var(--white-soft);
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+.download-btn:hover {
+  transform: scale(1.05) translateY(-3px);
+  background: linear-gradient(90deg, #666, #444);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .container {
+    padding: 30px 20px;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  .preview-container {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  form {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .preview-container {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  .preview-card,
+  .demo-card {
+    max-width: 90%;
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 30px 15px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  button,
+  .download-btn,
+  input[type='file'] {
+    width: 100%;
+  }
+}
