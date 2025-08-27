@@ -153,6 +153,5 @@ app.use('/api', (req, res) => {
 
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`https://enhance-photo-ai.up.railway.app
-`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
